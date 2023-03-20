@@ -1,0 +1,4 @@
+[submodule "specifications"]
+	path = specifications
+	url = https://github.com/openapi-kr/specifications.git
+	branch = main

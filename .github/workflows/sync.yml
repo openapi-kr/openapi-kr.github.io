@@ -1,0 +1,31 @@
+name: sync
+repository_dispatch:
+  types:
+    - sync_specifications
+
+concurrency:
+  group: sync_specifications
+  cancel-in-progress: true
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: GitHub Profile setup
+        run: |
+          git config user.name "hahnlee"
+          git config user.email "hanlee.dev@gmail.com"
+      - name: update submodules
+        run: git submodule update --remote
+      - name: push
+        run: |
+          git add .
+          git commit -m "chore: update submodules"
+          git push https://${{ secrets.BOT_TOKEN }}@github.com/openapi-kr/openapi-kr.github.io.git HEAD:main
