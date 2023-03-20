@@ -29,4 +29,4 @@ jobs:
         run: |
           git add .
           git commit -m "chore: update submodules"
-          git push https://${{ secrets.BOT_TOKEN }}@github.com/openapi-kr/openapi-kr.github.io.git HEAD:main
+          git push

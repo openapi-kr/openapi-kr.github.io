@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-
+  workflow_run:
+    workflows: ["sync"]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
