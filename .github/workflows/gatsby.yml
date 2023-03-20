@@ -5,7 +5,8 @@ on:
     branches:
       - main
   workflow_run:
-    workflows: ["sync"]
+    workflows:
+      - sync
     types:
       - completed
   workflow_dispatch:
@@ -57,7 +58,7 @@ jobs:
         run: pnpm install
       - name: Build with Gatsby
         env:
-          PREFIX_PATHS: 'true'
+          PREFIX_PATHS: "true"
         run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
