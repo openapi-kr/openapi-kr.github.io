@@ -1,7 +1,8 @@
 name: sync
-repository_dispatch:
-  types:
-    - sync_specifications
+on:
+  repository_dispatch:
+    types:
+      - sync_specifications
 
 concurrency:
   group: sync_specifications
